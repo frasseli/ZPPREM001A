@@ -1,0 +1,163 @@
+<core:View
+        xmlns:core="sap.ui.core"
+		xmlns:layout="sap.ui.layout"
+		xmlns:f="sap.ui.layout.form"
+        xmlns="sap.uxap"
+        xmlns:m="sap.m"
+        controllerName="zpprem001a.OrderDetail"
+        height="100%">
+
+	<m:Page title="{i18n>PLO_CONFIRM_FORM_TITLE}" id="page" showNavButton="true" navButtonTap="onNavButtonPress">
+
+			<ObjectPageLayout id="oOrderLayout" showAnchorBar="false">
+	
+			<headerTitle>
+				<ObjectPageHeader
+					objectTitle="{Matnr}"
+					objectSubtitle="{Maktx}">
+				</ObjectPageHeader>
+			</headerTitle>
+	
+			<headerContent>	
+				<layout:VerticalLayout>
+					<layout:HorizontalLayout>
+						<m:ObjectStatus title="{i18n>ORDER_ID}" text="{Plnum}"/>
+					</layout:HorizontalLayout>
+					<layout:HorizontalLayout>
+						<m:ObjectStatus title="Status" text="" id="orderStatus"/>
+					</layout:HorizontalLayout>
+				</layout:VerticalLayout>
+			</headerContent>
+
+			<sections>
+				<ObjectPageSection title="{i18n>PLO_DATA}">
+					<subSections>
+						<ObjectPageSubSection title="{i18n>PLO_DATA}">
+							<blocks>
+							
+								<m:VBox class="sapUiSmallMargin">
+							
+									<f:SimpleForm id="OrderDetailForm"
+												editable="true"
+												layout="ResponsiveGridLayout" >
+
+										<f:content>
+
+											<m:Toolbar id="TB2">
+												<m:Title text="{i18n>PLO_CONFIRM_DATA}" level="H4" titleStyle="H4"/>
+												<m:ToolbarSpacer />
+											</m:Toolbar>
+											
+											<!--m:Label text="{i18n>UNIT}" />
+											<m:Input value="{Meinsf}" editable="false"/-->
+	
+											<m:Label text="{i18n>MAX_QUANT}" />
+											<m:Input id="maxQuantity" value="{Maxgsmngf}" editable="false" />
+											<m:Input value="{Meinsf}" editable="false">
+												<m:layoutData>
+													<layout:GridData span="L3 M4 S4" />
+												</m:layoutData>
+											</m:Input>											
+	
+											<m:Label text="{i18n>CONFIRM_QUANT}" />
+											<m:Input id="confirmedQuantity" value="{path:'CO>Quant', type:'sap.ui.model.type.Float'}" editable="true" liveChange="onLiveChange" />
+											<m:Input value="{Meinsf}" editable="false">
+												<m:layoutData>
+													<layout:GridData span="L3 M4 S4" />
+												</m:layoutData>
+											</m:Input>											
+	
+											<m:Label text="{i18n>CONFIRM_DATE}" />
+											<m:DatePicker
+												id="confirmedDate"
+												value=""
+												displayFormat="medium"
+												valueFormat="yyyyMMdd"
+												class="sapUiSmallMarginBottom" />	
+											<!-- m:Input value="{CO>Date}" editable="true"/-->
+	
+											<m:Label text="{i18n>CONFIRM_TEXT}" />
+											<m:Input id="confirmedText" value="{CO>Text}" editable="true"/>
+											
+											
+											<m:Toolbar id="TB1">
+												<m:Title text="{i18n>PLO_PLAN_DATA}" level="H4" titleStyle="H4"/>
+												<m:ToolbarSpacer />
+											</m:Toolbar>
+	
+											<m:Label text="{i18n>MATERIAL}" />
+											<m:Input value="{Matnr}" editable="false">
+												<m:layoutData>
+													<layout:GridData span="L3 M4 S4" />
+												</m:layoutData>
+											</m:Input>											
+											<m:Input value="{Maktx}" editable="false"/>
+	
+											<m:Label text="{i18n>VERSION_LINE}" />
+											<m:Input value="{Verid}" editable="false"/>
+											<m:Input value="{Arbpl}" editable="false">
+												<m:layoutData>
+													<layout:GridData span="L3 M4 S4" />
+												</m:layoutData>
+											</m:Input>											
+	
+											<m:Label text="{i18n>WORK_CENTER}" />
+											<m:Input value="{Ktext}" editable="false"/>
+	
+											<m:Label text="{i18n>START_DATE_TIME}" />
+											<m:Input value="{Gstrsf}" editable="false"/>		
+											<m:Input value="{Gsuzsf}" editable="false">
+												<m:layoutData>
+													<layout:GridData span="L3 M4 S4" />
+												</m:layoutData>
+											</m:Input>											
+
+											<m:Label text="{i18n>END_DATE_TIME}" />
+											<m:Input value="{Gltrsf}" editable="false"/>
+											<m:Input value="{Gluzsf}" editable="false">
+												<m:layoutData>
+													<layout:GridData span="L3 M4 S4" />
+												</m:layoutData>
+											</m:Input>											
+	
+											<m:Label text="{i18n>NOTE1}" />
+											<m:Input value="{Note1}" editable="false"/>
+	
+											<m:Label text="{i18n>NOTE2}" />
+											<m:Input value="{Note2}" editable="false"/>
+	
+											<m:Label text="{i18n>NOTE3}" />
+											<m:Input value="{Note3}" editable="false"/>
+	
+											<m:Label text="{i18n>NOTE4}" />
+											<m:Input value="{Note4}" editable="false"/>
+	
+	
+											<m:Label text="{i18n>PLANNED_QUANT}" />
+											<m:Input id="plannedQuantity" value="{Gsmngf}" editable="false"/>
+											<m:Input value="{Meinsf}" editable="false">
+												<m:layoutData>
+													<layout:GridData span="L3 M4 S4" />
+												</m:layoutData>
+											</m:Input>
+											
+										</f:content>
+									</f:SimpleForm>
+								</m:VBox>
+							</blocks>
+						</ObjectPageSubSection>
+					</subSections>
+				</ObjectPageSection>
+			</sections>
+		</ObjectPageLayout>
+		
+		<m:footer>
+			<m:Toolbar>
+				<m:ToolbarSpacer/>
+				<m:Button text="{i18n>BTN_CONFIRM}" type="Accept" press="onConfirm" id="confirmButton"/>
+			</m:Toolbar>
+		</m:footer>
+			
+	</m:Page>
+	
+</core:View>	
